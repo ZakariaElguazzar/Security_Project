@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: product-service
+              uri: lb://PRODUCT-SERVICE
+              predicates:
+                - Path=/produits/**
+            - id: commande-service
+              uri: lb://COMMANDE-SERVICE
+              predicates:
+                - Path=/commandes/**
